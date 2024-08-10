@@ -2,7 +2,7 @@
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import img1 from '../images/img.jpg';
+import img1 from '../images/img.webp';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { motion } from 'framer-motion';
 
