@@ -94,7 +94,6 @@ const DotSeparatorContainer = styled(Box)({
 
 const HowToOrderContainer = styled(Box)({
   minHeight: '300px', // Adjust the minimum height as needed
-  padding: '0.75rem',
   background: 'linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)', // Example gradient
   borderRadius: '10px',
   boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
@@ -114,7 +113,7 @@ const HowToOrder = () => {
   const getNumberOfDots = () => {
     switch (screenSize) {
       case 'xs':
-        return 3;
+        return 2;
       case 'sm':
         return 4;
       case 'md':

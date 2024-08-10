@@ -37,11 +37,11 @@ const Menu = () => {
   ];
 
   const items = [
-    { id: 1, name: 'Vepřové výpečky se zelím, bramborový knedlík', description: 'Šťavnatý guláš s nadýchanými bramborovými knedlíky a jemným bílým zelím.', price: 150, category: 1, image: dish1, rating: 4.5 },
-    { id: 2, name: 'Hovězí stroganov, jasmínová rýže', description: 'Lahodný hovězí stroganoff s krémovou houbovou omáčkou, servírovaný s nadýchanou bílou rýží.', price: 120, category: 1, image: dish2, rating: 4.0 },
-    { id: 3, name: 'Smažený kuřecí řízek, mačkané brambory s máslem', description: 'Clover, lettuce, and nuts', price: 130, category: 1, image: dish3, rating: 4.2 },
-    { id: 4, name: 'Bramborové knedlíky plněné uzeným masem, zelí, cibulka', description: 'Grilled chicken and fresh greens', price: 170, category: 1, image: dish5, rating: 4.7 },
-    { id: 5, name: 'Svíčková omáčka s hovězím masem, houskový knedlík', description: 'Grilled chicken and fresh greens', price: 170, category: 1, image: dish7, rating: 4.7 },
+    { id: 1, name: 'Vepřové výpečky se zelím, bramborový knedlík', price: 150, category: 1, image: dish1, rating: 4.5 },
+    { id: 2, name: 'Hovězí stroganov, jasmínová rýže', price: 120, category: 1, image: dish2, rating: 4.0 },
+    { id: 3, name: 'Smažený kuřecí řízek, mačkané brambory s máslem', price: 130, category: 1, image: dish3, rating: 4.2 },
+    { id: 4, name: 'Bramborové knedlíky plněné uzeným masem, zelí, cibulka', price: 170, category: 1, image: dish5, rating: 4.7 },
+    { id: 5, name: 'Svíčková omáčka s hovězím masem, houskový knedlík', price: 170, category: 1, image: dish7, rating: 4.7 },
     { id: 8, name: 'Cola', description: 'Refreshing soda', price: 50, category: 2, image: cola, rating: 4.0 },
   ];
 

@@ -34,11 +34,6 @@ const PreparationInstructions = styled(Box)`
   margin-top: 1rem;
 `;
 
-const truncateText = (text, maxLength) => {
-  if (text.length <= maxLength) return text;
-  return `${text.substring(0, maxLength)}...`;
-};
-
 const MenuItem = ({ item }) => {
   const [open, setOpen] = useState(false);
 
@@ -95,16 +90,6 @@ const MenuItem = ({ item }) => {
             {item.id}. {item.name}
           </Typography>
           <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{
-              fontSize: { xs: '0.75rem', sm: '0.85rem', md: '1rem' }, // Font size in rem
-              mb: 1,
-            }}
-          >
-{truncateText(item.description, 40)}
-          </Typography>
-          <Typography
             variant="h6"
             component="div"
             sx={{
@@ -140,7 +125,6 @@ const MenuItem = ({ item }) => {
           left: '50%',
           transform: 'translate(-50%, -50%)',
           width: { xs: '90%', sm: '80%', md: '70%' },
-          height: { xs: '90%', sm: '80%', md: '70%' },
           bgcolor: 'background.paper',
           borderRadius: 2,
           boxShadow: 24,
@@ -149,17 +133,27 @@ const MenuItem = ({ item }) => {
           flexDirection: 'column',
           outline: 'none'
         }}>
-          <IconButton
-            onClick={handleClose}
-            sx={{
-              position: 'absolute',
-              top: 8,
-              right: 8,
-            }}
-            aria-label="Close modal"
-          >
-            <CloseIcon />
-          </IconButton>
+        <IconButton
+          onClick={handleClose}
+          size='small'
+          sx={{
+            position: 'absolute',
+            top: 8,
+            right: 8,
+            width: 20,
+            height: 20,
+            borderRadius: '50%',      // Zaoblené rohy
+            backgroundColor: '#1976d2',  // Modré pozadí
+            color: 'white',           // Barva ikony
+            '&:hover': {
+              backgroundColor: 'darkblue',  // Tmavší modré pozadí při hoveru
+            },
+            p: 1,                      // Padding pro větší klikací oblast
+          }}
+          aria-label="Close modal"
+        >
+          <CloseIcon />
+        </IconButton>
           <ModalContent>
             <ImageContainer>
               <CardMedia
@@ -176,9 +170,6 @@ const MenuItem = ({ item }) => {
             <TextContainer>
               <Typography id="modal-title" variant="h5" component="h2" gutterBottom sx={{ fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' } }}>
                 {item.name}
-              </Typography>
-              <Typography id="modal-description" variant="body1" sx={{ mb: 2, fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' } }}>
-                {item.description}
               </Typography>
               <Typography variant="h6" sx={{ mb: 2, fontSize: { xs: '1rem', sm: '1.125rem', md: '1.5rem' } }}>
                 Price: {item.price} Kč
