@@ -1,9 +1,11 @@
 import React from 'react';
 import { Box, Typography, styled, Paper } from '@mui/material';
 import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
+import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import PaymentIcon from '@mui/icons-material/Payment';
 import useScreenSize from './useScreenSize'; // Importujte svůj hook
+import { useTranslation } from 'react-i18next';
 
 // Styled components
 const StepIcon = styled(Paper)({
@@ -101,14 +103,15 @@ const HowToOrderContainer = styled(Box)({
   overflow: 'hidden',
 });
 
-const steps = [
-  { icon: <PhoneInTalkIcon sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: 'Zavolejte', description: 'Kontaktujte nás telefonicky' },
-  { icon: <ReceiptIcon sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: 'Nahlašte objednávku', description: 'Zadejte vaši objednávku' },
-  { icon: <PaymentIcon sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: 'A my přijedeme', description: 'Naše služba dorazí k vám' },
-];
-
 const HowToOrder = () => {
   const screenSize = useScreenSize();
+  const { t } = useTranslation();
+
+  const steps = [
+    { icon: <PhoneInTalkIcon sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: t('call'), description: 'Kontaktujte nás telefonicky' },
+    { icon: <ReceiptIcon sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: t('order'), description: 'Zadejte vaši objednávku' },
+    { icon: <DeliveryDiningIcon  sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: t('webring'), description: 'Naše služba dorazí k vám' },
+  ];
 
   // Určete počet teček na základě velikosti obrazovky
   const getNumberOfDots = () => {
@@ -128,8 +131,8 @@ const HowToOrder = () => {
 
   return (
     <HowToOrderContainer id='how-it-works'>
-      <Typography variant="h4" gutterBottom align="center" sx={{ mb: 4 }}>
-        How To Order
+      <Typography variant="h4" gutterBottom align="center" sx={{ mb: 4, fontWeight: 'bold', color: '#1976d2' }}>
+        {t('how-it-works')}
       </Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Box

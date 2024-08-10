@@ -131,7 +131,7 @@ const Hero = () => {
         onClick={() => scrollToSection('carousel')}
       >
         <ArrowDownwardIcon sx={{ fontSize: 40, color: '#fff', mb: 1 }} />
-        <Typography variant="caption" sx={{ color: '#fff', mb: 6 }}>{"Menu"}</Typography>
+        <Typography variant="caption" sx={{ color: '#fff', mb: 4 }}>{"Menu"}</Typography>
       </Box>
     </Box>
   );

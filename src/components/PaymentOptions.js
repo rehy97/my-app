@@ -4,6 +4,7 @@ import { Box, Typography, Paper, Grid, IconButton, Tooltip } from '@mui/material
 import { useTranslation } from 'react-i18next';
 import PaymentIcon from '@mui/icons-material/Payment';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
+import visa from '../images/visa-and-mastercard.webp';
 
 const PaymentOptions = () => {
   const { t } = useTranslation();

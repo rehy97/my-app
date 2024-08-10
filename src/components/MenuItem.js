@@ -1,15 +1,48 @@
 import React, { useState, useCallback } from 'react';
 import { Card, CardContent, CardMedia, Typography, Modal, Box, IconButton, Divider } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import FlameIcon from '@mui/icons-material/Whatshot'; // Importujte ikonu plamene
+import StarIcon from '@mui/icons-material/Star'; // Importujte ikonu hvězdy
 import styled from '@emotion/styled';
 import wood from '../images/wood.webp'; // Import the image for the background
 
 const StyledCard = styled(Card)`
+  position: relative; // Přidáno pro umístění štítků
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
+`;
+
+const NewBadge = styled(Box)`
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #ff5722; // Barva pozadí štítku
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+`;
+
+const RatingBadge = styled(Box)`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #ffd700; // Barva pozadí štítku
+  color: black;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
 `;
 
 const ModalContent = styled(Box)`
@@ -75,6 +108,14 @@ const MenuItem = ({ item }) => {
               height: '100%',
             }}
           />
+          <NewBadge>
+            <FlameIcon fontSize="small" /> {/* Ikona plamene */}
+            Novinka
+          </NewBadge>
+          <RatingBadge>
+            <StarIcon fontSize="small" /> {/* Ikona hvězdy */}
+            {item.rating}
+          </RatingBadge>
         </Box>
         <CardContent>
           <Typography
@@ -83,7 +124,7 @@ const MenuItem = ({ item }) => {
             sx={{
               fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' }, // Font size in rem
               fontWeight: 'bold',
-              color: 'primary.main',
+              color: '#1976d2',
               mb: 1,
             }}
           >
@@ -93,8 +134,9 @@ const MenuItem = ({ item }) => {
             variant="h6"
             component="div"
             sx={{
-              fontSize: { xs: '0.875rem', sm: '1rem', md: '1.25rem' }, // Font size in rem
+              fontSize: { xs: '1.25rem', sm: '1.25rem', md: '1.5rem' }, // Font size in rem
               fontWeight: 'bold',
+              color: '#1d273b',
               mb: 1,
             }}
           >
@@ -104,10 +146,10 @@ const MenuItem = ({ item }) => {
             variant="body2"
             color="text.secondary"
             sx={{
-              fontSize: { xs: '0.6rem', sm: '0.75rem', md: '1rem' }, // Font size in rem
+              fontSize: { xs: '0.75rem', sm: '1rem', md: '1.25rem' }, // Font size in rem
             }}
           >
-            {item.rating} ⭐
+            {item.weight} {/* Přidaná gramáž */}
           </Typography>
         </CardContent>
       </StyledCard>
@@ -177,6 +219,9 @@ const MenuItem = ({ item }) => {
               <Typography variant="body2" sx={{ mb: 2, fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' } }}>
                 Rating: {item.rating} ⭐
               </Typography>
+              <Typography variant="body2" sx={{ mb: 2, fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' } }}>
+                Weight: {item.weight} {/* Přidaná gramáž */}
+              </Typography>
               <Divider sx={{ my: 2 }} />
               <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1rem', sm: '1.125rem', md: '1.5rem' } }}>
                 Preparation Instructions
@@ -211,4 +256,5 @@ const MenuItem = ({ item }) => {
 };
 
 export default MenuItem;
+
 

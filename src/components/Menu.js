@@ -11,6 +11,7 @@ import dish6 from '../images/dish6.webp';
 import dish7 from '../images/dish7.webp';
 import cola from '../images/cola.webp';
 import { useTranslation } from 'react-i18next';
+import foods from '../images/foods.webp';
 
 import FlatwareIcon from '@mui/icons-material/Flatware';
 import LocalBarIcon from '@mui/icons-material/LocalBar'; // Example for Drinks
@@ -37,12 +38,12 @@ const Menu = () => {
   ];
 
   const items = [
-    { id: 1, name: 'Vepřové výpečky se zelím, bramborový knedlík', price: 150, category: 1, image: dish1, rating: 4.5 },
-    { id: 2, name: 'Hovězí stroganov, jasmínová rýže', price: 120, category: 1, image: dish2, rating: 4.0 },
-    { id: 3, name: 'Smažený kuřecí řízek, mačkané brambory s máslem', price: 130, category: 1, image: dish3, rating: 4.2 },
-    { id: 4, name: 'Bramborové knedlíky plněné uzeným masem, zelí, cibulka', price: 170, category: 1, image: dish5, rating: 4.7 },
-    { id: 5, name: 'Svíčková omáčka s hovězím masem, houskový knedlík', price: 170, category: 1, image: dish7, rating: 4.7 },
-    { id: 8, name: 'Cola', description: 'Refreshing soda', price: 50, category: 2, image: cola, rating: 4.0 },
+    { id: 1, name: t('dish1'), price: 150, category: 1, image: dish1, rating: 4.5, weight: '400g' },
+    { id: 2, name: t('dish2'), price: 120, category: 1, image: dish2, rating: 4.0, weight: '400g' },
+    { id: 3, name: t('dish3'), price: 130, category: 1, image: dish3, rating: 4.2, weight: '400g' },
+    { id: 4, name: t('dish4'), price: 170, category: 1, image: dish5, rating: 4.7, weight: '400g' },
+    { id: 5, name: t('dish5'), price: 170, category: 1, image: dish7, rating: 4.7, weight: '400g' },
+    { id: 8, name: 'Cola', description: 'Refreshing soda', price: 50, category: 2, image: cola, rating: 4.0, weight: '0.5l' },
   ];
 
   const handleCategoryClick = (categoryId) => {

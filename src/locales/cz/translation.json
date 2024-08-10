@@ -2,7 +2,15 @@
     "welcome": "Vítejte v ",
     "welcome2": "Hotovky Nonstop",
     "subtitle": "Při platbě nad 300 Kč máte doručení zdarma",
-    "how-it-works": "Jak to funguje",
+    "how-it-works": "Jak si objednat",
+    "dish1": "Vepřové výpečky se zelím, bramborový knedlík",
+    "dish2": "Hovězí stroganov, jasmínová rýže",
+    "dish3": "Smažený kuřecí řízek, mačkané brambory",
+    "dish4": "Bramborové knedlíky plněné uzeným masem, zelí, cibulka",
+    "dish5": "Svíčková omáčka s hovězím masem, houskový knedlík",
+    "call": "Zavolejte",
+    "order": "Objednejte",
+    "webring" : "Doručíme",
     "explore_menu": "Prozkoumat menu",
     "foods": "Jídla",
     "drinks": "Nápoje",
@@ -28,7 +36,6 @@
     "step2_description": "Přidejte vybraná jídla do košíku a pokračujte k pokladně.",
     "step3_title": "Užijte si jídlo",
     "step3_description": "Vyberte si objednávku nebo ji nechte doručit až k vám domů.",
-    "footer": "© 2024 Food Carousel. Všechna práva vyhrazena." 
-    
+    "footer": "© 2024 Food Carousel. Všechna práva vyhrazena."  
   }
   
