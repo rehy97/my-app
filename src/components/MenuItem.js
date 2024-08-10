@@ -27,11 +27,11 @@ const ImageContainer = styled(Box)`
 
 const TextContainer = styled(Box)`
   flex: 2;
-  padding: 16px;
+  padding: 1rem;
 `;
 
 const PreparationInstructions = styled(Box)`
-  margin-top: 16px;
+  margin-top: 1rem;
 `;
 
 const truncateText = (text, maxLength) => {
@@ -65,6 +65,8 @@ const MenuItem = ({ item }) => {
             width: '100%', 
             height: '100%', 
             backgroundImage: `url(${wood})`,
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center',
             overflow: 'hidden',
           }}
         >
@@ -84,7 +86,7 @@ const MenuItem = ({ item }) => {
             variant="h6"
             component="div"
             sx={{
-              fontSize: { xs: '1.25rem', sm: '1.5rem' },
+              fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' }, // Font size in rem
               fontWeight: 'bold',
               color: 'primary.main',
               mb: 1,
@@ -96,7 +98,7 @@ const MenuItem = ({ item }) => {
             variant="body2"
             color="text.secondary"
             sx={{
-              fontSize: { xs: '0.85rem', sm: '1.1rem' },
+              fontSize: { xs: '0.75rem', sm: '0.85rem', md: '1rem' }, // Font size in rem
               mb: 1,
             }}
           >
@@ -106,7 +108,7 @@ const MenuItem = ({ item }) => {
             variant="h6"
             component="div"
             sx={{
-              fontSize: { xs: '1rem', sm: '1.25rem' },
+              fontSize: { xs: '0.875rem', sm: '1rem', md: '1.25rem' }, // Font size in rem
               fontWeight: 'bold',
               mb: 1,
             }}
@@ -117,7 +119,7 @@ const MenuItem = ({ item }) => {
             variant="body2"
             color="text.secondary"
             sx={{
-              fontSize: { xs: '0.75rem', sm: '1rem' },
+              fontSize: { xs: '0.6rem', sm: '0.75rem', md: '1rem' }, // Font size in rem
             }}
           >
             {item.rating} ⭐
@@ -137,11 +139,12 @@ const MenuItem = ({ item }) => {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: { xs: '95%', sm: '80%', md: '70%' },
+          width: { xs: '90%', sm: '80%', md: '70%' },
+          height: { xs: '90%', sm: '80%', md: '70%' },
           bgcolor: 'background.paper',
           borderRadius: 2,
           boxShadow: 24,
-          p: 4,
+          p: { xs: 1, sm: 2, md: 3 },
           display: 'flex',
           flexDirection: 'column',
           outline: 'none'
@@ -171,41 +174,41 @@ const MenuItem = ({ item }) => {
               />
             </ImageContainer>
             <TextContainer>
-              <Typography id="modal-title" variant="h5" component="h2" gutterBottom>
+              <Typography id="modal-title" variant="h5" component="h2" gutterBottom sx={{ fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' } }}>
                 {item.name}
               </Typography>
-              <Typography id="modal-description" variant="body1" sx={{ mb: 2 }}>
+              <Typography id="modal-description" variant="body1" sx={{ mb: 2, fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' } }}>
                 {item.description}
               </Typography>
-              <Typography variant="h6" sx={{ mb: 2 }}>
+              <Typography variant="h6" sx={{ mb: 2, fontSize: { xs: '1rem', sm: '1.125rem', md: '1.5rem' } }}>
                 Price: {item.price} Kč
               </Typography>
-              <Typography variant="body2" sx={{ mb: 2 }}>
+              <Typography variant="body2" sx={{ mb: 2, fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' } }}>
                 Rating: {item.rating} ⭐
               </Typography>
               <Divider sx={{ my: 2 }} />
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1rem', sm: '1.125rem', md: '1.5rem' } }}>
                 Preparation Instructions
               </Typography>
               <PreparationInstructions>
-                <Typography variant="body2">
+                <Typography variant="body2" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' } }}>
                   1. Place the dish in the microwave.
                 </Typography>
-                <Typography variant="body2">
+                <Typography variant="body2" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' } }}>
                   2. Heat on high for 4 minutes.
                 </Typography>
-                <Typography variant="body2">
+                <Typography variant="body2" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' } }}>
                   3. Stir halfway through for even heating.
                 </Typography>
-                <Typography variant="body2">
+                <Typography variant="body2" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' } }}>
                   4. Let it sit for 1 minute before serving.
                 </Typography>
               </PreparationInstructions>
               <Divider sx={{ my: 2 }} />
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '1.125rem', md: '1.5rem' } }}>
                 Allergens
               </Typography>
-              <Typography variant="body2">
+              <Typography variant="body2" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' } }}>
                 Contains: Milk, Nuts, Gluten
               </Typography>
             </TextContainer>
@@ -217,3 +220,4 @@ const MenuItem = ({ item }) => {
 };
 
 export default MenuItem;
+
