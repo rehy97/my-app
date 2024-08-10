@@ -96,6 +96,7 @@ const HowToOrderContainer = styled(Box)({
   minHeight: '300px', // Adjust the minimum height as needed
   background: 'linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)', // Example gradient
   borderRadius: '10px',
+  paddingTop: '35px',
   boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
   overflow: 'hidden',
 });
@@ -134,7 +135,6 @@ const HowToOrder = () => {
         <Box
           sx={{
             display: 'flex',
-            alignItems: 'center',
             flexWrap: 'nowrap',
             overflowX: 'hidden', // Allows horizontal scrolling if necessary
           }}
@@ -149,7 +149,7 @@ const HowToOrder = () => {
                   mx: 2,
                 }}
               >
-                <Box sx={{ position: 'relative', mb: 2 }}>
+                <Box sx={{ position: 'relative', mb: 2, }}>
                   <StepIcon elevation={3}>
                     {step.icon}
                   </StepIcon>

@@ -58,7 +58,7 @@ const Menu = () => {
           display: 'flex',
           flexWrap: 'nowrap',
           justifyContent: 'center',
-          overflowX: 'auto',
+          overflowX: 'hidden',
           width: '100%'
         }}
       >

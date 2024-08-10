@@ -152,7 +152,7 @@ const MenuItem = ({ item }) => {
           }}
           aria-label="Close modal"
         >
-          <CloseIcon />
+          <CloseIcon fontSize='2rem' />
         </IconButton>
           <ModalContent>
             <ImageContainer>
