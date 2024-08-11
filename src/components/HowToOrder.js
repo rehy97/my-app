@@ -108,9 +108,9 @@ const HowToOrder = () => {
   const { t } = useTranslation();
 
   const steps = [
-    { icon: <PhoneInTalkIcon sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: t('call'), description: 'Kontaktujte nás telefonicky' },
-    { icon: <ReceiptIcon sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: t('order'), description: 'Zadejte vaši objednávku' },
-    { icon: <DeliveryDiningIcon  sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: t('webring'), description: 'Naše služba dorazí k vám' },
+    { icon: <PhoneInTalkIcon sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: t('call'), description: t('call_description') },
+    { icon: <ReceiptIcon sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: t('order'), description: t('order_description') },
+    { icon: <DeliveryDiningIcon  sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: t('webring'), description: t('webring_description') },
   ];
 
   // Určete počet teček na základě velikosti obrazovky
@@ -160,7 +160,16 @@ const HowToOrder = () => {
                     {index + 1}
                   </StepNumber>
                 </Box>
-                <Typography variant="subtitle1" align="center" sx={{ fontWeight: 'bold' }}>
+                <Typography variant="subtitle1" align="center" sx={{ 
+                  fontWeight: 'bold',
+                  fontSize: {
+                    xs: '1.1rem',  // Font size for extra-small screens
+                    sm: '1.2rem',  // Font size for small screens
+                    md: '1.3rem',  // Font size for medium screens
+                    lg: '1.4rem',    // Font size for large screens
+                    xl: '1.5rem'   // Font size for extra-large screens
+                  } 
+                   }}>
                   {step.label}
                 </Typography>
                 <Typography 
@@ -169,11 +178,11 @@ const HowToOrder = () => {
                   sx={{ 
                     color: 'text.secondary', 
                     fontSize: {
-                      xs: '0.7rem',  // Font size for extra-small screens
-                      sm: '0.8rem',  // Font size for small screens
-                      md: '0.9rem',  // Font size for medium screens
-                      lg: '1rem',    // Font size for large screens
-                      xl: '1.1rem'   // Font size for extra-large screens
+                      xs: '0.8rem',  // Font size for extra-small screens
+                      sm: '0.9rem',  // Font size for small screens
+                      md: '1rem',  // Font size for medium screens
+                      lg: '1.1rem',    // Font size for large screens
+                      xl: '1.2rem'   // Font size for extra-large screens
                     } 
                   }}
                 >

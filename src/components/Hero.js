@@ -74,6 +74,7 @@ const Hero = () => {
               component="span"
               sx={{ 
                 color: '#1976d2', 
+                textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
                 fontFamily: 'Roboto, sans-serif',
                 fontWeight: 'bold',
                 mb: 3,
@@ -130,7 +131,7 @@ const Hero = () => {
         }}
         onClick={() => scrollToSection('carousel')}
       >
-        <ArrowDownwardIcon sx={{ fontSize: 40, color: '#fff', mb: 1 }} />
+        <ArrowDownwardIcon sx={{ fontSize: 40, color: '#fff', mb: 1, textShadow: '1px 1px 2px rgba(0,0,0,0.1)', }} />
         <Typography variant="caption" sx={{ color: '#fff', mb: 4 }}>{"Menu"}</Typography>
       </Box>
     </Box>

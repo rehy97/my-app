@@ -53,10 +53,22 @@ const PaymentOptions = () => {
                 >
                   {method.icon}
                 </Box>
-                <Typography variant="h6" sx={{ fontSize: '1.5rem', mb: 2, fontWeight: 'bold', color: '#1976d2' }}>
+                <Typography variant="h6" sx={{                   fontSize: {
+                    xs: '1.1rem',  // Font size for extra-small screens
+                    sm: '1.2rem',  // Font size for small screens
+                    md: '1.3rem',  // Font size for medium screens
+                    lg: '1.4rem',    // Font size for large screens
+                    xl: '1.5rem'   // Font size for extra-large screens
+                  } , mb: 2, fontWeight: 'bold', color: '#1976d2' }}>
                   {method.title}
                 </Typography>
-                <Typography variant="body2" sx={{ fontSize: '1rem', color: 'text.secondary' }}>
+                <Typography variant="body2" sx={{                   fontSize: {
+                    xs: '0.8rem',  // Font size for extra-small screens
+                    sm: '0.9rem',  // Font size for small screens
+                    md: '1rem',  // Font size for medium screens
+                    lg: '1.1rem',    // Font size for large screens
+                    xl: '1.2rem'   // Font size for extra-large screens
+                  } , color: 'text.secondary' }}>
                   {method.description}
                 </Typography>
               </Paper>
