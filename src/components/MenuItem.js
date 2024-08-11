@@ -293,25 +293,6 @@ const MenuItem = ({ item }) => {
                   Weight: {item.weight}
                 </Typography>
               </Box>
-              <Divider sx={{ my: 2 }} />
-              <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1rem', sm: '1.125rem', md: '1.5rem' } }}>
-                Preparation Instructions
-              </Typography>
-              <PreparationInstructions>
-                <Typography variant="body2" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' } }}>
-                  1. Place the dish in the microwave.
-                </Typography>
-                <Typography variant="body2" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' } }}>
-                  2. Heat on high for 4 minutes.
-                </Typography>
-                <Typography variant="body2" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' } }}>
-                  3. Stir halfway through for even heating.
-                </Typography>
-                <Typography variant="body2" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' } }}>
-                  4. Let it sit for 1 minute before serving.
-                </Typography>
-              </PreparationInstructions>
-              <Divider sx={{ my: 2 }} />
               <AllergenAndOrderContainer>
                 <Box>
                   <Typography variant="h6" gutterBottom sx={{ 
