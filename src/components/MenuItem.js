@@ -391,7 +391,7 @@ const MenuItem = ({ item }) => {
           height: 'fit-content',
           ml: item.category !== 1 ? 'auto' : 0 // Margin left auto pro tlačítko, pokud není kategorie 1
         }}
-        onClick={() =>  scrollToSection('hero')} // Click event handler for closing modal and scrolling
+        onClick={() =>  scrollToSection('how-it-works')} // Click event handler for closing modal and scrolling
       >
         {t('orderButton')}
       </Button>
