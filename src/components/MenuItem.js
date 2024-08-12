@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Card, CardContent, CardMedia, Typography, Modal, Box, IconButton, Divider, Button } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Modal, Box, IconButton, Divider, Button, CircularProgress } from '@mui/material';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import CloseIcon from '@mui/icons-material/Close';
 import FlameIcon from '@mui/icons-material/Whatshot'; // Importujte ikonu plamene
@@ -9,6 +9,7 @@ import ScaleIcon from '@mui/icons-material/Scale';
 import styled from '@emotion/styled';
 import wood from '../images/wood.webp'; // Import the image for the background
 import { keyframes } from '@emotion/react';
+import { useTranslation } from 'react-i18next';
 
 // Keyframes for animations
 const fadeIn = keyframes`
@@ -121,9 +122,30 @@ const AllergenContainer = styled(Box)`
 
 const MenuItem = ({ item }) => {
   const [open, setOpen] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const { t } = useTranslation();
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
+  const scrollToSection = (id) => {
+    setOpen(false);
+    const element = document.getElementById(id);
+    const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+    const offset = 50;
+    const scrollPosition = elementPosition - offset;
+
+    window.scrollTo({
+      top: scrollPosition,
+      behavior: 'smooth'
+    });
+  };
 
   const handleOpen = useCallback(() => setOpen(true), []);
-  const handleClose = useCallback(() => setOpen(false), []);
+  const handleClose = useCallback(() => {
+    setOpen(false);
+  }, []);
 
   return (
     <>
@@ -147,20 +169,41 @@ const MenuItem = ({ item }) => {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'flex-end',
-            backgroundImage: `url(${wood})`,
+            backgroundImage: item.category === 1 ? `url(${wood})` : 'none', // Conditional background image
             backgroundSize: 'cover', 
             backgroundPosition: 'center',
             overflow: 'hidden',
+            minHeight: 200,
           }}
         >
+                    {!imageLoaded && (
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                height: '100%',
+              }}
+            >
+              <CircularProgress />
+            </Box>
+          )}
           <CardMedia
             component="img"
             alt={item.name}
             image={item.image}
+            onLoad={handleImageLoad}
             sx={{ 
               objectFit: 'cover', 
               width: '100%',
               height: '100%',
+              display: imageLoaded ? 'block' : 'none',
             }}
           />
           <NewBadge>
@@ -205,7 +248,7 @@ const MenuItem = ({ item }) => {
               fontSize: { xs: '0.75rem', sm: '1rem', md: '1.25rem' }, // Font size in rem
             }}
           >
-            {item.weight} {/* Přidaná gramáž */}
+            {item.weight}
           </Typography>
         </CardContent>
       </StyledCard>
@@ -222,7 +265,7 @@ const MenuItem = ({ item }) => {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: { xs: '90%', sm: '80%', md: '70%' },
+          width: { xs: '90%', sm: '70%', md: '70%' },
           bgcolor: 'background.paper',
           borderRadius: 4,
           boxShadow: 24,
@@ -242,10 +285,14 @@ const MenuItem = ({ item }) => {
             right: 8,
             width: 30,
             height: 30,
-            borderRadius: '50%',      // Zaoblené rohy
-            backgroundColor: '#1976d2',  // Modré pozadí
-            color: 'white',           // Barva ikony
+            borderRadius: '50%',      
+            backgroundColor: '#1976d2',  
+            color: 'white',           
             zIndex: 1,
+
+            '&:hover': {
+              backgroundColor: '#1565c0',
+            }
           }}
           aria-label="Close modal"
         >
@@ -253,10 +300,24 @@ const MenuItem = ({ item }) => {
         </IconButton>
           <ModalContent>
             <ImageContainer>
+            {!imageLoaded && (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '100%',
+                    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                  }}
+                >
+                  <CircularProgress />
+                </Box>
+              )}
               <CardMedia
                 component="img"
                 alt={`Image of ${item.name}`}
                 image={item.image}
+                onLoad={handleImageLoad}
                 sx={{
                   objectFit: 'cover',
                   width: '100%',
@@ -279,54 +340,62 @@ const MenuItem = ({ item }) => {
                 color: '#1d273b',
                 fontWeight: 'bold'
               }}>
-                Price: {item.price} Kč
+                {t('price')}: {item.price} Kč
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                 <StarIcon sx={{ color: '#ffd700', mr: 1 }} />
                 <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' } }}>
-                  Rating: {item.rating}
+                  {t('rating')}: {item.rating}
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                 <ScaleIcon sx={{ color: '#9e9e9e', mr: 1 }} />
                 <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' } }}>
-                  Weight: {item.weight}
+                  {t('weight')}: {item.weight}
                 </Typography>
               </Box>
               <AllergenAndOrderContainer>
-                <Box>
-                  <Typography variant="h6" gutterBottom sx={{ 
-                    fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' },
-                    fontWeight: 'bold',
-                    color: '#1976d2'
-                  }}>
-                    Allergens
-                  </Typography>
-                  <AllergenContainer>
-                    {['Milk', 'Nuts', 'Gluten'].map((allergen) => (
-                      <AllergenBadge key={allergen}>{allergen}</AllergenBadge>
-                    ))}
-                  </AllergenContainer>
-                </Box>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  startIcon={<RestaurantIcon />}
-                  sx={{ 
-                    borderRadius: '20px',
-                    textTransform: 'none',
-                    fontSize: '1rem',
-                    padding: '10px 20px',
-                    boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-                    '&:hover': {
-                      boxShadow: '0 6px 8px rgba(0,0,0,0.2)',
-                    },
-                    height: 'fit-content',
-                  }}
-                >
-                  Order Now
-                </Button>
-              </AllergenAndOrderContainer>
+      {item.category === 1 && (
+        <Box sx={{ flex: 1 }}> {/* flex: 1 zajistí, že tento box zabere maximální prostor */}
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{
+              fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' },
+              fontWeight: 'bold',
+              color: '#1976d2'
+            }}
+          >
+            {t('allergens')}
+          </Typography>
+          {/*<AllergenContainer>
+            {['Milk', 'Nuts', 'Gluten'].map((allergen) => (
+              <AllergenBadge key={allergen}>{allergen}</AllergenBadge>
+            ))}
+          </AllergenContainer>*/}
+        </Box>
+      )}
+      <Button
+        variant="contained"
+        color="primary"
+        startIcon={<RestaurantIcon />}
+        sx={{
+          borderRadius: '20px',
+          textTransform: 'none',
+          fontSize: '1rem',
+          padding: '10px 20px',
+          boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+          '&:hover': {
+            boxShadow: '0 6px 8px rgba(0,0,0,0.2)',
+          },
+          height: 'fit-content',
+          ml: item.category !== 1 ? 'auto' : 0 // Margin left auto pro tlačítko, pokud není kategorie 1
+        }}
+        onClick={() =>  scrollToSection('hero')} // Click event handler for closing modal and scrolling
+      >
+        {t('orderButton')}
+      </Button>
+    </AllergenAndOrderContainer>
             </TextContainer>
           </ModalContent>
         </Box>

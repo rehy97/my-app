@@ -89,7 +89,7 @@ const Navbar = () => {
       sx={{
         backgroundColor: scrolled ? '#1976d2': 'transparent',
         transition: 'background-color 0.3s ease-in-out',
-        backgroundImage: scrolled ? 'none' : 'url(/path/to/your/hero-image.jpg)',
+        backgroundImage: scrolled ? 'none' : '',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

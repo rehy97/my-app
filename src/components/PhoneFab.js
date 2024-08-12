@@ -1,10 +1,13 @@
 import React from 'react';
 import { Fab, Tooltip } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
+import { useTranslation } from 'react-i18next';
 
 const PhoneFAB = () => {
+  const { t } = useTranslation();
+
   return (
-    <Tooltip title="Call Us">
+    <Tooltip title={t('callUs')}>
       <Fab
         color="primary"
         aria-label="call"

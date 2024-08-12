@@ -61,12 +61,12 @@ const DotSeparator = styled(Box)({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '5px',
+  height: '4px',
   '&:before': {
     content: '""',
     display: 'block',
-    width: '5px',
-    height: '5px',
+    width: '4px',
+    height: '4px',
     borderRadius: '50%',
     backgroundColor: '#1976d2', // Primary color
   },
@@ -163,7 +163,7 @@ const HowToOrder = () => {
                 <Typography variant="subtitle1" align="center" sx={{ 
                   fontWeight: 'bold',
                   fontSize: {
-                    xs: '1.1rem',  // Font size for extra-small screens
+                    xs: '1.0rem',  // Font size for extra-small screens
                     sm: '1.2rem',  // Font size for small screens
                     md: '1.3rem',  // Font size for medium screens
                     lg: '1.4rem',    // Font size for large screens

@@ -90,7 +90,7 @@ const Hero = () => {
           variants={textAnimation}
           transition={{ ...transition, delay: 1 }}
         >
-          <Typography variant="h4" sx={{ mb: 3, zIndex: 2 }}>
+          <Typography variant="h4" sx={{ mb: 3, mt: 2, zIndex: 2 }}>
             +420 773 884 874
           </Typography>
         </motion.div>
