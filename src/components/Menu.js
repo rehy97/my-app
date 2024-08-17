@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Typography, Grid, Box, Avatar, IconButton, Divider, CircularProgress } from '@mui/material';
+import { Typography, Grid, Box, IconButton, Divider } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MenuItem from './MenuItem';
 import dish1 from '../images/dish1.webp';
@@ -13,30 +13,62 @@ import snack1 from '../images/snack1.webp';
 import cola from '../images/cola.webp';
 import sprite from '../images/sprite.webp';
 import fanta from '../images/fanta.webp';
+import foodsImage from '../images/foods.webp'; // Přidejte obrázky pro kategorie
 import { useTranslation } from 'react-i18next';
-import FlatwareIcon from '@mui/icons-material/Flatware';
-import LocalBarIcon from '@mui/icons-material/LocalBar';
-import SnackIcon from '@mui/icons-material/EmojiFoodBeverage';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { useSpring, animated } from 'react-spring';
+import { useInView } from 'react-intersection-observer';
 
-const CategoryAvatar = styled(Avatar)(({ theme, selected }) => ({
-  width: theme.spacing(7),
-  height: theme.spacing(7),
+
+const CategoryImage = styled(Box)(({ theme, selected }) => ({
+  width: theme.spacing(11),  // Default size
+  height: theme.spacing(11), // Default size
+  [theme.breakpoints.up('sm')]: {
+    width: theme.spacing(9),
+    height: theme.spacing(9),
+  },
+  [theme.breakpoints.up('md')]: {
+    width: theme.spacing(17),
+    height: theme.spacing(17),
+  },
+  [theme.breakpoints.up('lg')]: {
+    width: theme.spacing(17),
+    height: theme.spacing(17),
+  },
+  [theme.breakpoints.up('xl')]: {
+    width: theme.spacing(19),
+    height: theme.spacing(19),
+  },
   margin: 'auto',
   backgroundColor: selected ? theme.palette.primary.main : '#f5f5f5',
-  color: selected ? '#fff' : theme.palette.primary.main,
+  borderRadius: '50%',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  border: selected ? `3px solid ${theme.palette.primary.main}` : 'none',
 }));
+
+const AnimatedBox = animated(Box);
 
 const Menu = () => {
   const { t } = useTranslation();
 
   const [selectedCategory, setSelectedCategory] = useState(1);
 
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
+
+  const fadeIn = useSpring({
+    opacity: inView ? 1 : 0,
+    transform: inView ? 'translateY(0)' : 'translateY(50px)',
+    config: { mass: 1, tension: 120, friction: 14 },
+  });
+
   const categories = [
-    { id: 1, name: t('foods'), icon: <FlatwareIcon fontSize="large" /> },
-    { id: 2, name: t('drinks'), icon: <LocalBarIcon fontSize="large" /> },
-    { id: 3, name: t('snacks'), icon: <SnackIcon fontSize="large" /> },
-    { id: 4, name: t('others'), icon: <MoreHorizIcon fontSize="large" /> },
+    { id: 1, name: t('foods'), image: foodsImage },
+    { id: 2, name: t('drinks'), image: foodsImage },
+    { id: 3, name: t('snacks'), image: foodsImage },
+    { id: 4, name: t('others'), image: foodsImage },
   ];
 
   const items = [
@@ -58,7 +90,7 @@ const Menu = () => {
   const filteredItems = items.filter(item => item.category === selectedCategory);
 
   return (
-    <Box id="carousel" sx={{ padding: 2 }}>
+    <AnimatedBox id="carousel" style={fadeIn} ref={ref} sx={{ padding: 2 }}>
       <Box
         sx={{
           display: 'flex',
@@ -82,9 +114,10 @@ const Menu = () => {
             <IconButton
               onClick={() => handleCategoryClick(category.id)}
             >
-              <CategoryAvatar selected={selectedCategory === category.id}>
-                {category.icon}
-              </CategoryAvatar>
+              <CategoryImage
+                selected={selectedCategory === category.id}
+                sx={{ backgroundImage: `url(${category.image})` }}
+              />
             </IconButton>
             <Typography variant="caption" display="block" noWrap sx={{ 
               mt: 1,
@@ -130,7 +163,7 @@ const Menu = () => {
           </Grid>
         )}
       </Grid>
-    </Box>
+      </AnimatedBox>
   );
 };
 

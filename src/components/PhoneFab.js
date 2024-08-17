@@ -11,10 +11,22 @@ const PhoneFAB = () => {
       <Fab
         color="primary"
         aria-label="call"
-        sx={{ position: 'fixed', bottom: 16, right: 16 }}
-        onClick={() => window.location.href = 'tel:+1234567890'}
+        sx={{
+          position: 'fixed',
+          bottom: { xs: 16, sm: 24 }, // Adjust bottom position based on screen size
+          right: { xs: 16, sm: 24 },  // Adjust right position based on screen size
+          width: { xs: 56, sm: 64 },  // Ensure the button size is appropriate for touch devices
+          height: { xs: 56, sm: 64 }, // Ensure the button size is appropriate for touch devices
+          fontSize: { xs: '2rem', sm: '3rem' }, // Adjust icon size based on screen size
+          boxShadow: 3 // Optional: add a shadow to make the button stand out more
+        }}
+        onClick={() => window.location.href = 'tel:+420773884638'}
       >
-        <PhoneIcon />
+        <PhoneIcon
+          sx={{
+            fontSize: { xs: 30, sm: 28 } // Adjust icon size based on screen size
+          }}
+        />
       </Fab>
     </Tooltip>
   );

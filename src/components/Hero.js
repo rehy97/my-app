@@ -1,4 +1,3 @@
-// src/components/Hero.js
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { useTranslation } from 'react-i18next';

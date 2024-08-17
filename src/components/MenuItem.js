@@ -208,7 +208,7 @@ const MenuItem = ({ item }) => {
           />
           <NewBadge>
             <FlameIcon fontSize="small" /> {/* Ikona plamene */}
-            Novinka
+            {t('new')}
           </NewBadge>
           <RatingBadge>
             <StarIcon fontSize="small" /> {/* Ikona hvězdy */}
@@ -245,7 +245,7 @@ const MenuItem = ({ item }) => {
             variant="body2"
             color="text.secondary"
             sx={{
-              fontSize: { xs: '0.75rem', sm: '1rem', md: '1.25rem' }, // Font size in rem
+              fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.25rem' }, // Font size in rem
             }}
           >
             {item.weight}

@@ -6,6 +6,8 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 import PaymentIcon from '@mui/icons-material/Payment';
 import useScreenSize from './useScreenSize'; // Importujte svůj hook
 import { useTranslation } from 'react-i18next';
+import { useSpring, animated } from 'react-spring';
+import { useInView } from 'react-intersection-observer';
 
 // Styled components
 const StepIcon = styled(Paper)({
@@ -103,9 +105,22 @@ const HowToOrderContainer = styled(Box)({
   overflow: 'hidden',
 });
 
+const AnimatedBox = animated(Box);
+
 const HowToOrder = () => {
   const screenSize = useScreenSize();
   const { t } = useTranslation();
+
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
+
+  const fadeIn = useSpring({
+    opacity: inView ? 1 : 0,
+    transform: inView ? 'translateY(0)' : 'translateY(50px)',
+    config: { mass: 1, tension: 120, friction: 14 },
+  });
 
   const steps = [
     { icon: <PhoneInTalkIcon sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: t('call'), description: t('call_description') },
@@ -130,6 +145,7 @@ const HowToOrder = () => {
   };
 
   return (
+    <AnimatedBox style={fadeIn} ref={ref}>
     <HowToOrderContainer id='how-it-works'>
       <Typography variant="h4" gutterBottom align="center" sx={{ mb: 4, fontWeight: 'bold', color: '#1976d2' }}>
         {t('how-it-works')}
@@ -203,6 +219,7 @@ const HowToOrder = () => {
         </Box>
       </Box>
     </HowToOrderContainer>
+    </AnimatedBox>
   );
 };
 

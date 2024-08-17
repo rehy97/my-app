@@ -112,82 +112,110 @@ const Navbar = () => {
   />
 </Box>
         <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
-          <Button color="inherit" 
-          sx={{ textTransform: 'none',
-           fontSize: { xs: '0.75rem', sm: '1rem', md: '1rem' },
-           position: 'relative',
-           overflow: 'hidden',
-           '&::after': {
-             content: '""',
-             position: 'absolute',
-             left: 0,
-             bottom: 0,
-             width: '100%',
-             height: '2px',
-             backgroundColor: '#1976d2', // Underline color
-             transform: 'translateX(-100%)',
-             transition: 'transform 0.3s ease',
-           },
-           '&:hover::after': {
-             transform: 'translateX(0)', // Underline animation on hover
-           }  }} onClick={() => scrollToSection('hero')}>{t('home')}</Button>
-          <Button color="inherit" sx={{ textTransform: 'none',
-             fontSize: { xs: '0.75rem', sm: '1rem', md: '1rem' },
-             position: 'relative',
-             overflow: 'hidden',
-             '&::after': {
-               content: '""',
-               position: 'absolute',
-               left: 0,
-               bottom: 0,
-               width: '100%',
-               height: '2px',
-               backgroundColor: '#1976d2', // Underline color
-               transform: 'translateX(-100%)',
-               transition: 'transform 0.3s ease',
-             },
-             '&:hover::after': {
-               transform: 'translateX(0)', // Underline animation on hover
-             }
-              }} onClick={() => scrollToSection('carousel')}>{t('menu')}</Button>
-          <Button color="inherit" sx={{ textTransform: 'none',
-             fontSize: { xs: '0.75rem', sm: '1rem', md: '1rem' },
-             position: 'relative',
-             overflow: 'hidden',
-             '&::after': {
-               content: '""',
-               position: 'absolute',
-               left: 0,
-               bottom: 0,
-               width: '100%',
-               height: '2px',
-               backgroundColor: '#1976d2', // Underline color
-               transform: 'translateX(-100%)',
-               transition: 'transform 0.3s ease',
-             },
-             '&:hover::after': {
-               transform: 'translateX(0)', // Underline animation on hover
-             }
-              }} onClick={() => scrollToSection('how-it-works')}>{t('how-it-works')}</Button>
-          <Button color="inherit" sx={{ textTransform: 'none',
-             fontSize: { xs: '0.75rem', sm: '1rem', md: '1rem' },
-             position: 'relative',
-             overflow: 'hidden',
-             '&::after': {
-               content: '""',
-               position: 'absolute',
-               left: 0,
-               bottom: 0,
-               width: '100%',
-               height: '2px',
-               backgroundColor: '#1976d2', // Underline color
-               transform: 'translateX(-100%)',
-               transition: 'transform 0.3s ease',
-             },
-             '&:hover::after': {
-               transform: 'translateX(0)', // Underline animation on hover
-             }
-              }} onClick={() => scrollToSection('payment-options')}>{t('payment_options')}</Button>
+        <Button
+            color="inherit"
+            sx={{
+              textTransform: 'none',
+              fontSize: { xs: '0.75rem', sm: '1rem', md: '1rem' },
+              position: 'relative',
+              overflow: 'hidden',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                left: 0,
+                bottom: 0,
+                width: '100%',
+                height: '2px',
+                backgroundColor: scrolled ? '#fff' : '#1976d2', // Change color based on scroll state
+                transform: 'translateX(-100%)',
+                transition: 'transform 0.3s ease, background-color 0.3s ease', // Add transition for color change
+              },
+              '&:hover::after': {
+                transform: 'translateX(0)', // Underline animation on hover
+              }
+            }}
+            onClick={() => scrollToSection('hero')}
+          >
+            {t('home')}
+          </Button>
+          <Button
+            color="inherit"
+            sx={{
+              textTransform: 'none',
+              fontSize: { xs: '0.75rem', sm: '1rem', md: '1rem' },
+              position: 'relative',
+              overflow: 'hidden',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                left: 0,
+                bottom: 0,
+                width: '100%',
+                height: '2px',
+                backgroundColor: scrolled ? '#fff' : '#1976d2', // Change color based on scroll state
+                transform: 'translateX(-100%)',
+                transition: 'transform 0.3s ease, background-color 0.3s ease', // Add transition for color change
+              },
+              '&:hover::after': {
+                transform: 'translateX(0)', // Underline animation on hover
+              }
+            }}
+            onClick={() => scrollToSection('carousel')}
+          >
+            {t('menu')}
+          </Button>
+          <Button
+            color="inherit"
+            sx={{
+              textTransform: 'none',
+              fontSize: { xs: '0.75rem', sm: '1rem', md: '1rem' },
+              position: 'relative',
+              overflow: 'hidden',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                left: 0,
+                bottom: 0,
+                width: '100%',
+                height: '2px',
+                backgroundColor: scrolled ? '#fff' : '#1976d2', // Change color based on scroll state
+                transform: 'translateX(-100%)',
+                transition: 'transform 0.3s ease, background-color 0.3s ease', // Add transition for color change
+              },
+              '&:hover::after': {
+                transform: 'translateX(0)', // Underline animation on hover
+              }
+            }}
+            onClick={() => scrollToSection('how-it-works')}
+          >
+            {t('how-it-works')}
+          </Button>
+          <Button
+            color="inherit"
+            sx={{
+              textTransform: 'none',
+              fontSize: { xs: '0.75rem', sm: '1rem', md: '1rem' },
+              position: 'relative',
+              overflow: 'hidden',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                left: 0,
+                bottom: 0,
+                width: '100%',
+                height: '2px',
+                backgroundColor: scrolled ? '#fff' : '#1976d2', // Change color based on scroll state
+                transform: 'translateX(-100%)',
+                transition: 'transform 0.3s ease, background-color 0.3s ease', // Add transition for color change
+              },
+              '&:hover::after': {
+                transform: 'translateX(0)', // Underline animation on hover
+              }
+            }}
+            onClick={() => scrollToSection('payment-options')}
+          >
+            {t('payment_options')}
+          </Button>
           <Select
             value={language}
             onChange={(e) => changeLanguage(e.target.value)}
