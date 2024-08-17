@@ -19,12 +19,26 @@ import LocalBarIcon from '@mui/icons-material/LocalBar';
 import SnackIcon from '@mui/icons-material/EmojiFoodBeverage';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
-const CategoryAvatar = styled(Avatar)(({ theme, selected }) => ({
-  width: theme.spacing(7),
-  height: theme.spacing(7),
-  margin: 'auto',
-  backgroundColor: selected ? theme.palette.primary.main : '#f5f5f5',
-  color: selected ? '#fff' : theme.palette.primary.main,
+const CategoryButton = styled(IconButton)(({ theme, selected }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  padding: '12px',
+  borderRadius: '12px',
+  transition: 'all 0.3s ease',
+  backgroundColor: selected ? '#1976d2' : '#f5f5f5',
+  color: selected ? '#ffffff' : '#333333',
+  '&:hover': {
+    backgroundColor: selected ? '#1565c0' : '#e0e0e0',
+    transform: 'translateY(-5px)',
+  },
+}));
+
+const CategoryIcon = styled(Box)(({ selected }) => ({
+  fontSize: '2rem',
+  marginBottom: '8px',
+  transition: 'all 0.3s ease',
+  transform: selected ? 'scale(1.1)' : 'scale(1)',
 }));
 
 const Menu = () => {
@@ -58,56 +72,53 @@ const Menu = () => {
   const filteredItems = items.filter(item => item.category === selectedCategory);
 
   return (
-    <Box id="carousel" sx={{ padding: 2 }}>
+    <Box id="carousel" sx={{ padding: { xs: 2, sm: 3, md: 4 }, backgroundColor: '#f5f7fa' }}>
       <Box
         sx={{
           display: 'flex',
           flexWrap: 'nowrap',
           justifyContent: 'center',
-          overflowX: 'hidden',
-          width: '100%'
+          overflowX: 'auto',
+          width: '100%',
+          mb: 4,
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+          scrollbarWidth: 'none',
         }}
       >
         {categories.map((category) => (
           <Box
             key={category.id}
             sx={{
-              flex: '0 0 auto',
-              minWidth: '25%',
-              boxSizing: 'border-box',
-              padding: { xs: 1, md: 2 },
-              textAlign: 'center',
+              display: 'flex',
+              minWidth: { xs: '25%', sm: '20%' },
+              px: 1,
+              justifyContent: 'center',
             }}
           >
-            <IconButton
+            <CategoryButton
               onClick={() => handleCategoryClick(category.id)}
+              selected={selectedCategory === category.id}
             >
-              <CategoryAvatar selected={selectedCategory === category.id}>
+              <CategoryIcon selected={selectedCategory === category.id}>
                 {category.icon}
-              </CategoryAvatar>
-            </IconButton>
-            <Typography variant="caption" display="block" noWrap sx={{ 
-              mt: 1,
-              fontSize: { xs: '0.875rem', sm: '1rem', md: '1.25rem' },
-              fontFamily: 'Poppins, Arial, sans-serif',  
-            }}>
-              {category.name}
-            </Typography>
+              </CategoryIcon>
+              <Typography variant="caption" sx={{ 
+                fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' },
+                fontWeight: 'bold',
+              }}>
+                {category.name}
+              </Typography>
+            </CategoryButton>
           </Box>
         ))}
       </Box>
-      <Divider sx={{ my: 4, borderColor: 'grey.300' }} />
-      <Typography
-        variant="h5"
-        component="div"
-        gutterBottom
-        sx={{ textAlign: 'center', mb: 4 }}
-      >
-      </Typography>
-      <Grid container spacing={2} sx={{ minHeight: { xs: '200px', sm: '250px', md: '300px', lg: '350px' } }}> {/* Nastavení minimální výšky */}
+      <Divider sx={{ my: 4, borderColor: 'rgba(0, 0, 0, 0.12)' }} />
+      <Grid container spacing={3}>
         {filteredItems.length > 0 ? (
           filteredItems.map((item) => (
-            <Grid item xs={12} sm={6} md={4} key={item.id}>
+            <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
               <MenuItem item={item} />
             </Grid>
           ))
@@ -116,14 +127,12 @@ const Menu = () => {
             <Box
               sx={{
                 display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
                 justifyContent: 'center',
-                minHeight: '300px', // Výška pro prázdný stav
-                textAlign: 'center'
+                alignItems: 'center',
+                height: '400px',
               }}
             >
-              <Typography variant="h6" color="text.secondary" fontFamily={'Poppins, Arial, sans-serif'}>
+              <Typography variant="h6" color="text.secondary">
                 {t('noItemsFound')}
               </Typography>
             </Box>

@@ -75,7 +75,6 @@ const Hero = () => {
               sx={{ 
                 color: '#1976d2', 
                 textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
-                fontFamily: 'Roboto, sans-serif',
                 fontWeight: 'bold',
                 mb: 3,
               }}

@@ -24,53 +24,50 @@ const slideIn = keyframes`
 `;
 
 const StyledCard = styled(Card)`
-  position: relative; // Přidáno pro umístění štítků
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 `;
 
-const NewBadge = styled(Box)`
+const Badge = styled(Box)`
   position: absolute;
-  top: 8px;
-  left: 8px;
-  background-color: #ff5722; // Barva pozadí štítku
-  color: white;
   padding: 4px 8px;
   border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.75rem;
-  font-weight: bold;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 `;
 
-const RatingBadge = styled(Box)`
-  position: absolute;
+const NewBadge = styled(Badge)`
+  top: 8px;
+  left: 8px;
+  background-color: #ff5722;
+  color: white;
+`;
+
+const RatingBadge = styled(Badge)`
   top: 8px;
   right: 8px;
-  background-color: #ffd700; // Barva pozadí štítku
+  background-color: #ffd700;
   color: black;
-  padding: 4px 8px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.75rem;
-  font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 `;
 
 const ModalContent = styled(Box)`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 20px;
   animation: ${fadeIn} 0.5s ease;
-  @media (max-width: 600px) {
-    flex-direction: column;
+  @media (min-width: 600px) {
+    flex-direction: row;
   }
 `;
 
