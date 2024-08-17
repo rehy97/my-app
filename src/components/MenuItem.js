@@ -74,19 +74,6 @@ const ModalContent = styled(Box)`
   }
 `;
 
-const ImageContainer = styled(Box)`
-  flex: 1;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  background-image: url(${wood}); // Použití importovaného obrázku
-  background-size: cover; // Přizpůsobí obrázek velikosti kontejneru
-  background-position: center; // Umístí obrázek na střed
-  background-repeat: no-repeat; // Zabrání opakování obrázku
-  height: 100%; // Výška obrázku
-`;
-
 const TextContainer = styled(Box)`
   flex: 2;
   padding: 1rem;
@@ -124,6 +111,19 @@ const MenuItem = ({ item }) => {
   const [open, setOpen] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const { t } = useTranslation();
+
+  const ImageContainer = styled(Box)`
+  flex: 1;
+  border-radius: ${item.category === 1 ? '8px' : 0};
+  box-shadow: ${item.category === 1 ? '0 4px 8px rgba(0,0,0,0.1)' : 0};
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  background-image: url(${wood}); // Použití importovaného obrázku
+  background-size: cover; // Přizpůsobí obrázek velikosti kontejneru
+  background-position: center; // Umístí obrázek na střed
+  background-repeat: no-repeat; // Zabrání opakování obrázku
+  height: 100%; // Výška obrázku
+`;
 
   const handleImageLoad = () => {
     setImageLoaded(true);

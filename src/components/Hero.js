@@ -90,7 +90,7 @@ const Hero = () => {
           variants={textAnimation}
           transition={{ ...transition, delay: 1 }}
         >
-          <Typography variant="h4" sx={{ mb: 3, mt: 2, zIndex: 2 }}>
+          <Typography variant="h4" sx={{ mb: 3, mt: 2, zIndex: 2, cursor: 'pointer' }} onClick={() => window.location.href = 'tel:+420773884638'} >
             +420 773 884 874
           </Typography>
         </motion.div>
@@ -113,7 +113,7 @@ const Hero = () => {
           <Button 
             variant="contained" 
             onClick={() => scrollToSection('carousel')} 
-            sx={{ zIndex: 2, backgroundColor: '#1976d2' }}
+            sx={{ zIndex: 2, backgroundColor: '#1976d2', padding: '10px 20px', fontSize: '1.25rem', fontWeight: 'bold', color: '#fff', textTransform: 'none', mt: 2 }}
           >
             {t('explore_menu')}
           </Button>

@@ -6,56 +6,59 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 import PaymentIcon from '@mui/icons-material/Payment';
 import useScreenSize from './useScreenSize'; // Importujte svůj hook
 import { useTranslation } from 'react-i18next';
+import { color } from 'framer-motion';
+
+const colors = {
+  primary: '#1976d2',
+  secondary: '#ff5722',
+  accent: '#4caf50',
+  background: '#f5f7fa',
+  text: '#333333',
+};
 
 // Styled components
-const StepIcon = styled(Paper)({
-  width: '60px',
-  height: '60px',
+const StepIcon = styled(Paper)(({ theme }) => ({
+  width: '70px',
+  height: '70px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: '50%',
-  backgroundColor: '#1976d2', // Primary color
-  color: '#ffffff', // Contrast text color
-  transition: 'background-color 0.3s ease',
-  '&:hover': {
-    backgroundColor: '#1976d2', // Darker primary color
-  },
+  background: `linear-gradient(135deg, ${colors.primary} 0%, ${theme.palette.primary.dark} 100%)`,
+  color: '#ffffff',
   '@media (min-width:600px)': {
-    width: '80px',
-    height: '80px',
+    width: '90px',
+    height: '90px',
   },
   '@media (min-width:960px)': {
-    width: '100px',
-    height: '100px',
+    width: '110px',
+    height: '110px',
   },
-});
+}));
 
-const StepNumber = styled(Paper)({
-  width: '24px',
-  height: '24px',
+const StepNumber = styled(Paper)(({ theme }) => ({
+  width: '28px',
+  height: '28px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: '50%',
-  backgroundColor: '#A1662F', // Secondary color
-  color: '#ffffff', // Contrast text color
+  backgroundColor: colors.secondary,
+  color: '#ffffff',
   position: 'absolute',
-  bottom: '-7px',
-  right: '-7px',
+  bottom: '-10px',
+  right: '-10px',
+  fontWeight: 'bold',
+  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
   '@media (min-width:600px)': {
-    width: '30px',
-    height: '30px',
-    bottom: '-7px',
-    right: '-7px',
+    width: '34px',
+    height: '34px',
   },
   '@media (min-width:960px)': {
-    width: '35px',
-    height: '35px',
-    bottom: '-7px',
-    right: '-7px',
+    width: '40px',
+    height: '40px',
   },
-});
+}));
 
 const DotSeparator = styled(Box)({
   display: 'flex',
@@ -95,11 +98,8 @@ const DotSeparatorContainer = styled(Box)({
 });
 
 const HowToOrderContainer = styled(Box)({
-  minHeight: '300px', // Adjust the minimum height as needed
-  background: 'linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)', // Example gradient
-  borderRadius: '10px',
-  paddingTop: '35px',
-  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+  minHeight: '350px',
+  background: colors.background,
   overflow: 'hidden',
 });
 
@@ -110,7 +110,7 @@ const HowToOrder = () => {
   const steps = [
     { icon: <PhoneInTalkIcon sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: t('call'), description: t('call_description') },
     { icon: <ReceiptIcon sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: t('order'), description: t('order_description') },
-    { icon: <DeliveryDiningIcon  sx={{ fontSize: { xs: '2.25rem', md: '3rem' } }} />, label: t('webring'), description: t('webring_description') },
+    { icon: <DeliveryDiningIcon  sx={{ fontSize: { xs: '2.75rem', md: '3.75rem' } }} />, label: t('webring'), description: t('webring_description') },
   ];
 
   // Určete počet teček na základě velikosti obrazovky
@@ -130,11 +130,20 @@ const HowToOrder = () => {
   };
 
   return (
-    <HowToOrderContainer id='how-it-works'>
-      <Typography variant="h4" gutterBottom align="center" sx={{ mb: 4, fontWeight: 'bold', color: '#1976d2' }}>
+    <HowToOrderContainer id='how-it-works' sx={{pt: 5}}>
+      <Typography 
+        variant="h4"
+        gutterBottom 
+        align="center" 
+        sx={{ 
+          mb: 5, 
+          fontWeight: 'bold', 
+          color: colors.primary,
+        }}
+      >
         {t('how-it-works')}
       </Typography>
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <Box
           sx={{
             display: 'flex',

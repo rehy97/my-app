@@ -5,9 +5,24 @@ import { useTranslation } from 'react-i18next';
 import PaymentIcon from '@mui/icons-material/Payment';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import visa from '../images/visa-and-mastercard.webp';
+import { useSpring, animated } from 'react-spring';
+import { useInView } from 'react-intersection-observer';
+
+const AnimatedBox = animated(Box);
 
 const PaymentOptions = () => {
   const { t } = useTranslation();
+
+  const [ref, inView] = useInView({
+    threshold: 0.6,
+    triggerOnce: true,
+  });
+
+  const fadeIn = useSpring({
+    opacity: inView ? 1 : 0,
+    transform: inView ? 'translateY(0)' : 'translateY(50px)',
+    config: { mass: 1, tension: 120, friction: 14 },
+  });
 
   const paymentMethods = [
     { icon: <PaymentIcon fontSize="inherit" sx={{ fontSize: 60, color: '#1976d2' }} />, title: t('credit_card'), description: t('credit_card_description') },
@@ -15,7 +30,7 @@ const PaymentOptions = () => {
   ];
 
   return (
-    <Box id="payment-options" sx={{ p: 4, mt: 5, background: 'linear-gradient(to right, #e3f2fd, #ffffff)' }}>
+    <Box id="payment-options" style={fadeIn} ref={ref} sx={{ p: 4, pt: 5, background: '#f5f7fa' }}>
       <Typography variant="h4" align="center" gutterBottom sx={{ mb: 4, fontWeight: 'bold', color: '#1976d2' }}>
         {t('payment_title')}
       </Typography>
@@ -76,7 +91,7 @@ const PaymentOptions = () => {
           </Grid>
         ))}
       </Grid>
-    </Box>
+      </Box>
   );
 };
 
